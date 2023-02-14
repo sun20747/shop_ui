@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-primary mb-5 d-flex justify-content-between fixed-top">
+  <div class="pointer" (click)="goToShopList()">
+    <p class="fs-1 text-light p-0 m-0 ms-5 text-ling font">
+      <img src="" alt="">
+      shopping</p>
+  </div>
+  <div></div>
+  <div class="d-flex pe-5 justify-content-between align-middle">
+    <div (click)="goToCart()">
+      <i class="bi bi-cart-plus pointer" style="font-size:24px;color:white;"></i>
+      <span class='badge badge-warning' id='lblCartCount'>{{cart_data.length}}</span>
+    </div>
+    <div class="pointer">
+      <i title="Logout" class="bi bi-box-arrow-left" style="font-size:24px;color:white;" (click)="logout()"></i>
+    </div>
+  </div>
+  <!-- <button (click)="loadData()">click</button> -->
+</nav>

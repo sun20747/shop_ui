@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="card col-6">
+      <div class="card-body">
+        <h6 class="card-title mb-4">
+          <i class="bi bi-filter"></i>
+          <strong>ค้นหาแบบละเอียด</strong>
+        </h6>
+        <div class="mt-2 pt-3">
+          <h6>sort product</h6>
+          <div class="row-cols-auto">
+            <kendo-dropdownlist [defaultItem]="defaultItem" (selectionChange)="filter_price($event)"
+              [data]="option_price" [textField]="'name'" [valueField]="'id'" style="width: 100%;">
+            </kendo-dropdownlist>
+          </div>
+        </div>
+        <div class="mt-2 pt-3">
+          <h6>category</h6>
+          <div class="row-cols-auto">
+            <span class="badge text-bg-primary user-select-none pointer" (click)="filter_cagegory(0)">All
+              Products</span>
+            <div *ngFor="let category of category_ist">
+              <span class="badge text-bg-primary user-select-none pointer"
+                (click)="filter_cagegory(category)">{{category}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 pt-3">
+          <h6>Rating</h6>
+          <div *ngFor="let rating of ratings">
+            <div class="d-flex pointer" (click)="filter_rating(rating.rate)">
+              <ngx-stars [readonly]="true" [initialStars]="rating.rate" [color]="'#1e90ff'"></ngx-stars>
+              <!-- <rating class="star mb-2" [(ngModel)]="rating.rate" [max]="5" [readonly]="true"></rating> -->
+              <!-- <div *ngIf="rating.id != 1"></div> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

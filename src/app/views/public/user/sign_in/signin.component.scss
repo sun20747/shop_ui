@@ -1,0 +1,21 @@
+.bottomright {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  animation: fadeIn 1s;
+}
+
+.demo {
+  padding: 20px;
+  margin: 5px;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 0;
+  }
+}

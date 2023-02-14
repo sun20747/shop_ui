@@ -1,0 +1,162 @@
+<div class="container-fluid">
+  <div class="row">
+    <table class="table table-hover pointer">
+      <thead>
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Product Desc </th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">
+            <div class="d-flex justify-content-center">
+              Action
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of cart_data" (click)="productDetail(product, $event)">
+          <th scope="row" id="allowclick">
+            <img [src]="product.image" width="72px" height="72px" alt="" id="allowclick">
+          </th>
+          <td class="align-middle" id="allowclick">
+            <h6 id="allowclick">{{product.category}}</h6>
+            <p id="allowclick">{{product.title}}</p>
+          </td>
+          <td class="align-middle" id="allowclick">
+            <p id="allowclick">
+              {{product.price | currency : "THB" : "symbol-narrow"}}
+            </p>
+          </td>
+          <td class="align-middle">
+            <div class="d-flex justify-content-center">
+              <div class="input-group input-group-sm">
+                <button class="btn btn-outline-secondary" type="button" name="remove" (click)="changeCount(product,0)">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <input type="number" class="form-control" placeholder="" style="width: 50px;" min="1"
+                  [max]="product.rating.count" [(ngModel)]="product.count" (input)="check_stock(product.count,product)">
+                <button class="btn btn-outline-secondary" type="button" (click)="changeCount(product,1)" name="add">
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+              </div>
+            </div>
+          </td>
+          <td class="align-middle">
+            <p>
+              {{product.price * product.count | currency : "THB" : "symbol-narrow"}}
+            </p>
+          </td>
+
+          <td class="align-middle">
+            <div class="d-flex justify-content-center">
+              <i class="bi bi-trash-fill text-danger pointer" (click)="takeOutCart(product)"></i>
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title mb-3">Order Summary</h6>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <tbody>
+                <tr>
+                  <th>Total :</th>
+                  <th class="text-end">{{total | currency : "THB" : "symbol-narrow"}}</th>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-end me-3 mt-3">
+              <button class="btn btn-outline-secondary" type="button" (click)="portOrder()">
+                <i class="bi bi-cart4"></i> Check Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title mb-3">Order History</h6>
+
+          <accordion [isAnimated]="true">
+            <accordion-group *ngFor="let order of order_data"
+              heading="{{order.data_order | date:'เวลา HH:mm:ss dd/MM/yyyy'}}">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Product Desc</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of order.products_in_cart">
+                    <th scope="row">
+                      <img [src]="item.image" width="72px" height="72px" alt="" id="allowclick">
+                    </th>
+                    <td>
+                      <h6 id="allowclick">{{item.category}}</h6>
+                      <p id="allowclick">{{item.title}}</p>
+                    </td>
+                    <td class="align-middle" id="allowclick">
+                      <p id="allowclick">
+                        {{item.price | currency : "THB" : "symbol-narrow"}}
+                      </p>
+                    </td>
+
+                    <td class="align-middle" id="allowclick">
+                      <p id="allowclick">
+                        {{item.count}}
+                      </p>
+                    </td>
+                    <td class="align-middle">
+                      <p>
+                        {{item.price * item.count | currency : "THB" : "symbol-narrow"}}
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="table-responsive">
+                <table class="table mb-0">
+                  <tbody>
+                    <tr>
+                      <th>Status :</th>
+                      <th class="text-end">{{order.status === 2 ? "ชําระเงินแล้ว" : "กรุณาชําระเงิน"}}</th>
+                    </tr>
+                    <tr>
+                      <th>Total :</th>
+                      <th class="text-end">{{Caltotal(order.products_in_cart) | currency : "THB" : "symbol-narrow"}}
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex justify-content-end me-3 mt-3">
+                </div>
+              </div>
+
+            </accordion-group>
+          </accordion>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

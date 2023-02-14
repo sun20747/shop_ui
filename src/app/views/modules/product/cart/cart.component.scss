@@ -1,0 +1,31 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+accordion-group {
+  ::ng-deep {
+    div {
+      &>div.panel-heading.card-header.panel-enabled {
+        background-color: rgba(52, 58, 64, 0.15); // change the background of every accordion heading
+
+        .btn-link {
+          color: rgb(10, 6, 6); // change the accordion heading buttons style
+          font-size: 18px;
+        }
+      }
+
+      &>div.panel-collapse.collapse.in.show>div {
+        background-color: hsla(210, 10%, 83%, 0.10); // change the expanded content style
+      }
+    }
+  }
+}

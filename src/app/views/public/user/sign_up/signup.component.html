@@ -1,0 +1,74 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form [formGroup]="signupForm" (submit)="signup()">
+          <div class="d-flex justify-content-center">
+            <h1>Sign up</h1>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label for="f_name" class="form-label">FirsName</label>
+            <input formControlName="f_name" type="text"
+              [ngClass]="signupForm.controls.f_name.invalid && signupForm.controls.f_name.touched ? 'invalid' : ''"
+              class="form-control" id="f_name" placeholder="FirsName">
+            <!-- <small *ngIf="signupForm.controls.f_name.invalid && signupForm.controls.f_name.touched ">
+              {{signupForm.controls.f_name.errors | json}}
+            </small> -->
+          </div>
+
+          <div class="form-outline mb-4">
+            <label for="l_name" class="form-label">LastName</label>
+            <input [ngClass]="signupForm.controls.l_name.invalid && signupForm.controls.l_name.touched ? 'invalid' : ''"
+              formControlName="l_name" type="text" class="form-control" id="l_name" placeholder="LastName">
+          </div>
+
+          <div class="form-outline mb-4">
+            <label for="email" class="form-label">Email address</label>
+            <input [ngClass]="signupForm.controls.email.invalid && signupForm.controls.email.touched ? 'invalid' : ''"
+              formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+          </div>
+
+          <div class="form-outline mb-4">
+            <label for="password" class="form-label" for="form1Example23">Password</label>
+            <input
+              [ngClass]="signupForm.controls.password.invalid && signupForm.controls.password.touched ? 'invalid' : ''"
+              formControlName="password" type="password" class="form-control" id="password" placeholder="password">
+          </div>
+
+          <div class="form-outline mb-4">
+            <label for="password" class="form-label" for="form1Example23">Confirm Password</label>
+            <input
+              [ngClass]="signupForm.controls.confirmPassword.invalid && signupForm.controls.confirmPassword.touched ? 'invalid' : ''"
+              formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"
+              placeholder="Confirm Password">
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+          </div>
+
+        </form>
+      </div>
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img
+          src="https://img.freepik.com/free-vector/computer-login-concept-illustration_114360-7962.jpg?w=1380&t=st=1665126166~exp=1665126766~hmac=dabbcb2b158d5986b7d8ecb615d6219193736ab75f05f96251b79917fb5db8d7"
+          class="img-fluid" alt="Phone image">
+      </div>
+    </div>
+    <!-- <div *ngIf="ErrorMes" class="demo bottomright">
+        <div class=" alert alert-danger d-flex align-items-center" role="alert">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+          </svg>
+          <div>
+            <strong>{{ErrorMes}}</strong>
+          </div>
+        </div>
+    </div> -->
+  </div>
+
+</section>
